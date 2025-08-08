@@ -1,9 +1,9 @@
-<img src="" alt="Troika Hub Logo" width="50" height="50">
+<img src="" alt="Mikrosell Logo" width="50" height="50">
 
-# Troika Hub - The All-in-One Creative Lab for Innovators (Landing Page)
+# Mikrosell - The All-in-One Creative Lab for Innovators (Landing Page)
 
-<!-- <img src="https://github.com/user-attachments/assets/deab03fd-4234-44c3-a6ad-484c4a1a02a1" alt="Troika Hub Thumbnail"> -->
-<!-- <img src="https://github.com/user-attachments/assets/ee867e8e-7871-4289-bd56-3eef40adb9b2" alt="Troika Hub Thumbnail" style="border-radius: 50px;" width="1280"> -->
+<!-- <img src="https://github.com/user-attachments/assets/deab03fd-4234-44c3-a6ad-484c4a1a02a1" alt="Mikrosell Thumbnail"> -->
+<!-- <img src="https://github.com/user-attachments/assets/ee867e8e-7871-4289-bd56-3eef40adb9b2" alt="Mikrosell Thumbnail" style="border-radius: 50px;" width="1280"> -->
 <img src="public\assets\Thumbnail (1).png">
 
 ## This is the previous version of the site, feel free to get inspired by the design make something for yourselves :>
@@ -13,7 +13,7 @@
 
 
 ## Introduction
-Troika Hub is a powerful platform designed to foster creativity and productivity. Whether you're building innovative web apps, automating tasks, or developing AI-driven tools, Troika Hub provides the resources and tools to bring your ideas to life. Our ecosystem includes Inquirix, Optix, Conferix, Scrapix, and more, empowering individuals and teams to create, collaborate, and innovate.
+Mikrosell is a powerful platform designed to foster creativity and productivity. Whether you're building innovative web apps, automating tasks, or developing AI-driven tools, Mikrosell provides the resources and tools to bring your ideas to life. Our ecosystem includes Inquirix, Optix, Conferix, Scrapix, and more, empowering individuals and teams to create, collaborate, and innovate.
 
 ## Products
 
@@ -24,11 +24,11 @@ Troika Hub is a powerful platform designed to foster creativity and productivity
 
 ## Live Preview
 
-Check out the live demo of Troika Hub’s ecosystem here: [Live Preview](http://troikahub.tech)
+Check out the live demo of Mikrosell’s ecosystem here: [Live Preview](http://mikrosell.com)
 
 ## Watch Demo on YouTube
 
-Check out the tutorial to see how Troika Hub and its tools are built: [Watch the Tutorial](https://youtu.be/TroikaHubDemo)
+Check out the tutorial to see how Mikrosell and its tools are built: [Watch the Tutorial](https://youtu.be/MikrosellDemo)
 
 ## Tech Stack
 
@@ -44,11 +44,11 @@ Check out the tutorial to see how Troika Hub and its tools are built: [Watch the
 * AWS
 
 ## Installation
-To run Troika Hub locally, follow these steps:
+To run Mikrosell locally, follow these steps:
 
 1. Clone the repository:
     ```bash
-    git clone https://github.com/TroikaHub/troika-hub.git
+    git clone https://github.com/Mikrosell/mikrosell-systems.git
     ```
 2. Install dependencies:
     ```bash
@@ -58,7 +58,7 @@ To run Troika Hub locally, follow these steps:
     ```
    # app
     NEXT_PUBLIC_APP_DOMAIN=your-domain
-    NEXT_PUBLIC_APP_NAME=TroikaHub
+    NEXT_PUBLIC_APP_NAME=Mikrosell
 
     # clerk
     NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY=your-publishable-key
@@ -77,7 +77,7 @@ To run Troika Hub locally, follow these steps:
 This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
 
 ## Contact
-If you have any questions or feedback, feel free to reach out via [GitHub Issues](https://github.com/TroikaHub/troika-hub/issues).
+If you have any questions or feedback, feel free to reach out via [GitHub Issues](https://github.com/Mikrosell/mikrosell-systems/issues).
 
 ---
 

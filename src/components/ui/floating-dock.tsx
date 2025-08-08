@@ -34,7 +34,12 @@ export const FloatingDock = ({
   desktopClassName,
   mobileClassName,
 }: {
-  items: { title: string; icon: React.ReactNode; href: string; target?: string }[];
+  items: {
+    title: string;
+    icon: React.ReactNode;
+    href: string;
+    target?: string;
+  }[];
   desktopClassName?: string;
   mobileClassName?: string;
 }) => {
@@ -50,7 +55,12 @@ const FloatingDockMobile = ({
   items,
   className,
 }: {
-  items: { title: string; icon: React.ReactNode; href: string; target?: string }[];
+  items: {
+    title: string;
+    icon: React.ReactNode;
+    href: string;
+    target?: string;
+  }[];
   className?: string;
 }) => {
   const [open, setOpen] = useState(false);
@@ -83,7 +93,9 @@ const FloatingDockMobile = ({
                   href={item.href}
                   key={item.title}
                   target={item.target}
-                  rel={item.target === "_blank" ? "noopener noreferrer" : undefined}
+                  rel={
+                    item.target === "_blank" ? "noopener noreferrer" : undefined
+                  }
                 >
                   {item.icon}
                 </Link>
@@ -106,7 +118,12 @@ const FloatingDockDesktop = ({
   items,
   className,
 }: {
-  items: { title: string; icon: React.ReactNode; href: string; target?: string }[];
+  items: {
+    title: string;
+    icon: React.ReactNode;
+    href: string;
+    target?: string;
+  }[];
   className?: string;
 }) => {
   let mouseX = useMotionValue(Infinity);
@@ -182,7 +199,11 @@ function IconContainer({
   const [hovered, setHovered] = useState(false);
 
   return (
-    <Link href={href} target={target} rel={target === "_blank" ? "noopener noreferrer" : undefined}>
+    <Link
+      href={href}
+      target={target}
+      rel={target === "_blank" ? "noopener noreferrer" : undefined}
+    >
       <motion.div
         ref={ref}
         style={{ width, height }}
@@ -213,7 +234,6 @@ function IconContainer({
   );
 }
 
-
 export function FloatingDockDemo() {
   const links = [
     {
@@ -223,7 +243,7 @@ export function FloatingDockDemo() {
       ),
       href: "#",
     },
- 
+
     {
       title: "Products",
       icon: (
@@ -231,23 +251,22 @@ export function FloatingDockDemo() {
       ),
       href: "#",
     },
-    
+
     {
       title: "LinkedIn",
       icon: (
         <IconBrandLinkedin className="h-full w-full text-neutral-500 dark:text-neutral-300" />
       ),
-      href: "https://www.linkedin.com/company/troika-hub",
+      href: "https://www.linkedin.com/company/mikrosell-systems",
       target: "_blank",
     },
-    
- 
+
     {
       title: "Twitter",
       icon: (
         <IconBrandX className="h-full w-full text-neutral-500 dark:text-neutral-300" />
       ),
-      href: "https://x.com/TroikaHub",
+      href: "https://x.com/Mikrosell",
       target: "_blank",
     },
     {
@@ -255,7 +274,7 @@ export function FloatingDockDemo() {
       icon: (
         <IconBrandGithub className="h-full w-full text-neutral-500 dark:text-neutral-300" />
       ),
-      href: "https://github.com/Troika-Hub",
+      href: "https://github.com/Mikrosell",
       target: "_blank",
     },
   ];
