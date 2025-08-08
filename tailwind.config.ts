@@ -23,6 +23,12 @@ const config = {
     },
     extend: {
       colors: {
+        mlemon:'#FFFFCA',
+        msecondary:'#B17E64',
+        mprimary:'#0D1F38',
+        maccent:'#F3E5D8',
+        mmuted:'#8D99AE',
+        mdarksecondary:'#3C2A1D',
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",

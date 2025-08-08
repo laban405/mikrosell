@@ -52,11 +52,11 @@ const Navbar = () => {
             <Link href="/#home">
               <span className="text-lg font-bold font-heading !leading-none">
                 <img
-                  src="\icons\logo.png"
+                  src="\icons\logo-text.png"
                   alt="Logo"
-                  className="h-8 w-8 mr-2 inline-block"
+                  className="w-[120px] mr-2 inline-block"
                 />
-                Mikrosell
+               
               </span>
             </Link>
 

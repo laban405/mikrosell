@@ -59,7 +59,7 @@ const HomePage = async () => {
                         </h1> */}
             <h1 className="text-foreground text-center py-6 text-5xl font-medium tracking-normal text-balance sm:text-6xl md:text-7xl lg:text-8xl !leading-[1.15] w-full font-heading">
               Where Innovation Meets{" "}
-              <span className="text-transparent bg-gradient-to-r from-violet-500 to-fuchsia-500 bg-clip-text inline-bloc">
+              <span className="text-transparent bg-gradient-to-r from-mlemon to-msecondary bg-clip-text inline-bloc">
                 Vision
               </span>
             </h1>
