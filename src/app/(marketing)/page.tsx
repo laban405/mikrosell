@@ -1,39 +1,110 @@
 import {
   AnimationContainer,
   MaxWidthWrapper,
-  PricingCards,
 } from "@/components";
-import { BentoCard, BentoGrid, CARDS } from "@/components/ui/bento-grid";
 import { BorderBeam } from "@/components/ui/border-beam";
 import { Button } from "@/components/ui/button";
 import {
   Card,
   CardContent,
   CardDescription,
-  CardFooter,
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { FloatingDock, FloatingDockDemo } from "@/components/ui/floating-dock";
 import { LampContainer } from "@/components/ui/lamp";
 import MagicBadge from "@/components/ui/magic-badge";
 import MagicCard from "@/components/ui/magic-card";
-import { COMPANIES, PROCESS } from "@/utils";
-import { REVIEWS } from "@/utils/constants/misc";
 import { currentUser } from "@clerk/nextjs/server";
 import {
   ArrowRightIcon,
-  CreditCardIcon,
-  SquareDashedMousePointer,
-  StarIcon,
-  Triangle,
+  CarIcon,
+  CheckIcon,
+  FileTextIcon,
+  ShoppingCartIcon,
+  SparklesIcon,
+  ZapIcon,
 } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-// import { FloatingDockDemo } from "./floatingDock/page";
 
 const HomePage = async () => {
   const user = await currentUser();
+
+  const services = [
+    {
+      title: "Business Software for SMEs",
+      description: "ERP | CRM | POS | HRIS | Inventory | Finance Systems",
+      detail: "Built to automate your workflows and scale your operations with precision.",
+      icon: SparklesIcon,
+    },
+    {
+      title: "Custom Software Development",
+      description: "Mobile apps, web apps, SaaS platforms, APIs, and enterprise systems",
+      detail: "Crafted to deliver speed, security, and seamless user experience.",
+      icon: ZapIcon,
+    },
+    {
+      title: "AI & Machine Learning",
+      description: "Predictive analytics, chatbots, computer vision, automation tools",
+      detail: "Intelligent business systems that learn and adapt.",
+      icon: SparklesIcon,
+    },
+    {
+      title: "IoT Solutions",
+      description: "Smart sensors, remote monitoring, industrial IoT, agriculture tech",
+      detail: "Connected ecosystems for the modern business.",
+      icon: ZapIcon,
+    },
+    {
+      title: "SEO & Digital Optimization",
+      description: "Technical SEO, content optimization, local SEO, Core Web Vitals",
+      detail: "Performance tuning and analytics for maximum visibility.",
+      icon: FileTextIcon,
+    },
+  ];
+
+  const benefits = [
+    {
+      title: "Cost-Effective Excellence",
+      description: "Delivering world-class engineering—at rates up to 60% lower than international agencies.",
+    },
+    {
+      title: "Top 1% Quality Engineering",
+      description: "International coding standards, rigorous QA, 99.9% uptime, and 24/7 support.",
+    },
+    {
+      title: "Local Expertise + Global Best Practices",
+      description: "Solutions optimized for East African ecosystems with worldwide scalability.",
+    },
+    {
+      title: "40% Faster Delivery",
+      description: "Agile processes and a senior-first team ensure rapid deployment without compromising quality.",
+    },
+  ];
+
+  const products = [
+    {
+      title: "Mikrosell Carwash POS",
+      icon: CarIcon,
+      description: "Built for modern car wash businesses. Includes real-time tracking, mobile payments, loyalty programs, and multi-branch control.",
+    },
+    {
+      title: "Next.js SEO Blog Platform",
+      icon: FileTextIcon,
+      description: "Core Web Vitals optimized, schema automation, blazing speed, and unbeatable search rankings.",
+    },
+    {
+      title: "Zuri Household E-commerce Platform",
+      icon: ShoppingCartIcon,
+      description: "Mobile-first marketplace with full payment integration (M-Pesa, Visa, Mastercard), real-time inventory, and seamless vendor management.",
+    },
+  ];
+
+  const socialProof = [
+    { metric: "200+", label: "SMEs transformed across Kenya, Uganda, and Tanzania" },
+    { metric: "98%", label: "Client retention rate" },
+    { metric: "150%", label: "Average ROI in 18 months" },
+  ];
 
   return (
     <div className="overflow-x-hidden scrollbar-hide size-full">
@@ -41,42 +112,26 @@ const HomePage = async () => {
       <MaxWidthWrapper>
         <div className="flex flex-col items-center justify-center w-full text-center bg-gradient-to-t from-background">
           <AnimationContainer className="flex flex-col items-center justify-center w-full text-center">
-            <button className="group relative grid overflow-hidden rounded-full px-4 py-1 shadow-[0_1000px_0_0_hsl(0_0%_20%)_inset] transition-colors duration-200">
-              <span>
-                <span className="spark mask-gradient absolute inset-0 h-[100%] w-[100%] animate-flip overflow-hidden rounded-full [mask:linear-gradient(white,_transparent_50%)] before:absolute before:aspect-square before:w-[200%] before:rotate-[-90deg] before:animate-rotate before:bg-[conic-gradient(from_0deg,transparent_0_340deg,white_360deg)] before:content-[''] before:[inset:0_auto_auto_50%] before:[translate:-50%_-15%]" />
-              </span>
-              <span className="backdrop absolute inset-[1px] rounded-full bg-neutral-950 transition-colors duration-200 group-hover:bg-neutral-900" />
-              <span className="h-full w-full blur-md absolute bottom-0 inset-x-0 bg-gradient-to-tr from-primary/20"></span>
-              <span className="z-10 py-0.5 text-sm text-neutral-100 flex items-center justify-center gap-1">
-                Mikrosell is now Live!
-                <ArrowRightIcon className="ml-1 size-3 transition-transform duration-300 ease-in-out group-hover:translate-x-0.5" />
-              </span>
-            </button>
-            {/* <h1 className="text-foreground tex</div>t-center py-6 text-5xl font-medium tracking-normal text-balance sm:text-6xl md:text-7xl lg:text-8xl !leading-[1.15] w-full font-heading">
-                        Where Innovation Meets <span className="text-transparent bg-gradient-to-r from-violet-500 to-fuchsia-500 bg-clip-text inline-bloc">
-                                Vision
-                            </span>
-                        </h1> */}
+            <MagicBadge title="Mikrosell Systems" />
             <h1 className="text-foreground text-center py-6 text-5xl font-medium tracking-normal text-balance sm:text-6xl md:text-7xl lg:text-8xl !leading-[1.15] w-full font-heading">
-              Where Innovation Meets{" "}
+              Transforming East Africa&apos;s Digital Landscape Through{" "}
               <span className="text-transparent bg-gradient-to-r from-mlemon to-msecondary bg-clip-text inline-bloc">
-                Vision
+                Innovation
               </span>
             </h1>
-            <p className="mb-12 text-lg tracking-tight text-muted-foreground md:text-xl text-balance">
-              Seamlessly blend design, technology, and imagination in one place.
-              <br className="hidden md:block" />
-              <span className="hidden md:block">
-                Crafting digital experiences that resonate, inspire, and endure.
-              </span>
+            <p className="mb-12 text-lg tracking-tight text-muted-foreground md:text-xl text-balance max-w-3xl">
+              Empowering SMEs with world-class software, AI, IoT, and SEO solutions—built for speed, scale, and real business impact.
             </p>
-            <div className="flex items-center justify-center whitespace-nowrap gap-4 z-50">
-              <Button asChild>
-                <Link
-                  href={user ? "/dashboard" : "/auth/sign-in"}
-                  className="flex items-center"
-                >
-                  Join our community!
+            <div className="flex items-center justify-center whitespace-nowrap gap-4 z-50 flex-wrap">
+              <Button asChild size="lg">
+                <Link href="/contact" className="flex items-center">
+                  Get a Free Consultation
+                  <ArrowRightIcon className="w-4 h-4 ml-2" />
+                </Link>
+              </Button>
+              <Button asChild variant="outline" size="lg">
+                <Link href="/work" className="flex items-center">
+                  Explore Our Work
                   <ArrowRightIcon className="w-4 h-4 ml-2" />
                 </Link>
               </Button>
@@ -90,15 +145,11 @@ const HomePage = async () => {
             <div className="absolute md:top-[10%] left-1/2 gradient w-3/4 -translate-x-1/2 h-1/4 md:h-1/3 inset-0 blur-[5rem] animate-image-glow"></div>
             <div className="-m-2 rounded-xl p-2 ring-1 ring-inset ring-foreground/20 lg:-m-4 lg:rounded-2xl bg-opacity-50 backdrop-blur-3xl">
               <BorderBeam size={250} duration={12} delay={9} />
-
-              <Image
-                src="/assets/Profile Screen (1).png"
-                alt="Dashboard"
-                width={1200}
-                height={1200}
-                quality={100}
-                className="rounded-md lg:rounded-xl bg-foreground/10 ring-1 ring-border"
-              />
+              <div className="rounded-md lg:rounded-xl bg-foreground/10 ring-1 ring-border p-12 min-h-[400px] flex items-center justify-center">
+                <p className="text-2xl font-heading text-muted-foreground">
+                  Dashboard Preview
+                </p>
+              </div>
               <div className="absolute -bottom-4 inset-x-0 w-full h-1/2 bg-gradient-to-t from-background z-40"></div>
               <div className="absolute bottom-0 md:-bottom-8 inset-x-0 w-full h-1/4 bg-gradient-to-t from-background z-50"></div>
             </div>
@@ -106,92 +157,51 @@ const HomePage = async () => {
         </div>
       </MaxWidthWrapper>
 
-      {/* Companies Section */}
-      <MaxWidthWrapper>
-        <AnimationContainer delay={0.4}>
-          <div className="py-14">
-            <div className="mx-auto px-4 md:px-8">
-              <h2 className="text-center text-sm font-medium font-heading text-neutral-400 uppercase">
-                Trusted by the best in the industry
-              </h2>
-              <div className="mt-8">
-                <ul className="flex flex-wrap items-center gap-x-6 gap-y-6 md:gap-x-16 justify-center">
-                  {COMPANIES.map((company) => (
-                    <li key={company.name}>
-                      <Image
-                        src={company.logo}
-                        alt={company.name}
-                        width={80}
-                        height={80}
-                        quality={100}
-                        className="w-28 h-auto"
-                      />
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </div>
+      {/* Value Proposition */}
+      <MaxWidthWrapper className="py-10">
+        <AnimationContainer delay={0.1}>
+          <div className="flex flex-col items-center justify-center w-full text-center py-8">
+            <h2 className="text-center text-3xl md:text-5xl !leading-[1.1] font-medium font-heading text-foreground">
+              Top-Tier Software. African Insight. Global Standards.
+            </h2>
+            <p className="mt-4 text-center text-lg text-muted-foreground max-w-2xl">
+              We help businesses unlock efficiency, scale faster, and compete globally through custom-built digital solutions engineered by elite developers and strategists.
+            </p>
           </div>
         </AnimationContainer>
       </MaxWidthWrapper>
 
-      {/* Products Section */}
+      {/* What We Do */}
       <MaxWidthWrapper className="pt-10">
         <AnimationContainer delay={0.1}>
           <div className="flex flex-col w-full items-center lg:items-center justify-center py-8">
-            <MagicBadge title="Products" />
+            <MagicBadge title="What We Do" />
             <h2 className="text-center lg:text-center text-3xl md:text-5xl !leading-[1.1] font-medium font-heading text-foreground mt-6">
-              Crafted for Visionaries Like You
+              Comprehensive Digital Solutions
             </h2>
             <p className="mt-4 text-center lg:text-center text-lg text-muted-foreground max-w-lg">
-              We create Products that empower you by solving the challenges that
-              truly count.
+              From enterprise software to cutting-edge AI, we deliver solutions that transform businesses.
             </p>
           </div>
         </AnimationContainer>
-        <AnimationContainer delay={0.2}>
-          <BentoGrid className="py-8">
-            {CARDS.map((feature, idx) => (
-              <BentoCard key={idx} {...feature} />
-            ))}
-          </BentoGrid>
-        </AnimationContainer>
-      </MaxWidthWrapper>
-
-      {/* Process Section */}
-      <MaxWidthWrapper className="py-10">
-        <AnimationContainer delay={0.1}>
-          <div className="flex flex-col items-center lg:items-center justify-center w-full py-8 max-w-xl mx-auto">
-            <MagicBadge title="The Process" />
-            <h2 className="text-center lg:text-center text-3xl md:text-5xl !leading-[1.1] font-medium font-heading text-foreground mt-6">
-              From Concept to Creation in 3 Simple Steps{" "}
-            </h2>
-            <p className="mt-4 text-center lg:text-center text-lg text-muted-foreground max-w-lg">
-              At Mikrosell, we bring your ideas to life with a seamless, 3-step
-              process designed for visionaries like you.
-            </p>
-          </div>
-        </AnimationContainer>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 w-full py-8 gap-4 md:gap-8">
-          {PROCESS.map((process, id) => (
-            <AnimationContainer delay={0.2 * id} key={id}>
-              <MagicCard className="group md:py-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 py-8">
+          {services.map((service, idx) => (
+            <AnimationContainer delay={0.2 * idx} key={idx}>
+              <MagicCard className="group md:py-6">
                 <div className="flex flex-col items-start justify-center w-full">
-                  <process.icon
+                  <service.icon
                     strokeWidth={1.5}
-                    className="w-10 h-10 text-foreground"
+                    className="w-10 h-10 text-foreground mb-4"
                   />
-                  <div className="flex flex-col relative items-start">
-                    <span className="absolute -top-6 right-0 border-2 border-border text-foreground font-medium text-2xl rounded-full w-12 h-12 flex items-center justify-center pt-0.5">
-                      {id + 1}
-                    </span>
-                    <h3 className="text-base mt-6 font-medium text-foreground">
-                      {process.title}
-                    </h3>
-                    <p className="mt-2 text-sm text-muted-foreground">
-                      {process.description}
-                    </p>
-                  </div>
+                  <h3 className="text-lg font-medium text-foreground mb-2">
+                    {service.title}
+                  </h3>
+                  <p className="text-sm font-medium text-muted-foreground mb-2">
+                    {service.description}
+                  </p>
+                  <p className="text-sm text-muted-foreground">
+                    {service.detail}
+                  </p>
                 </div>
               </MagicCard>
             </AnimationContainer>
@@ -199,141 +209,105 @@ const HomePage = async () => {
         </div>
       </MaxWidthWrapper>
 
-      {/* Pricing Section */}
+      {/* Why Businesses Choose Us */}
       <MaxWidthWrapper className="py-10">
         <AnimationContainer delay={0.1}>
           <div className="flex flex-col items-center lg:items-center justify-center w-full py-8 max-w-xl mx-auto">
-            <MagicBadge title="Meet The Team" />
+            <MagicBadge title="Why Choose Us" />
             <h2 className="text-center lg:text-center text-3xl md:text-5xl !leading-[1.1] font-medium font-heading text-foreground mt-6">
-              Meet the Visionaries Behind Mikrosell
+              Why Businesses Choose Us
             </h2>
             <p className="mt-4 text-center lg:text-center text-lg text-muted-foreground max-w-lg">
-              A talented team of creators, developers, and innovators working
-              together to bring bold ideas to life.
+              We combine world-class engineering with local expertise to deliver exceptional value.
             </p>
           </div>
         </AnimationContainer>
-        <AnimationContainer delay={0.2}>
-          <PricingCards />
-        </AnimationContainer>
-        <AnimationContainer delay={0.3}>
-          <div className="flex flex-wrap items-start md:items-center justify-center lg:justify-evenly gap-6 mt-12 max-w-5xl mx-auto w-full">
-            <div className="flex items-center gap-2">
-              <Triangle className="w-5 h-5 text-foreground" />
-              <span className="text-muted-foreground">
-                Mikrosell means a group of three in Russian, so its a symbol of
-                unity among us three.
-              </span>
-            </div>
-          </div>
-          <div className="flex flex-wrap items-start md:items-center justify-center lg:justify-evenly gap-3 mt-4 max-w-5xl mx-auto w-full">
-            <div className="flex items-center gap-1">
-              <SquareDashedMousePointer className="" />
-              <span className="text-muted-foreground">
-                Ps: hover over the text in the cards to get more info about them
-                :&gt;
-              </span>
-            </div>
-          </div>
-        </AnimationContainer>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6 py-8">
+          {benefits.map((benefit, id) => (
+            <AnimationContainer delay={0.2 * id} key={id}>
+              <MagicCard className="group md:py-6">
+                <div className="flex flex-col items-start justify-center w-full">
+                  <div className="flex items-center gap-3 mb-3">
+                    <CheckIcon className="w-6 h-6 text-primary" />
+                    <h3 className="text-lg font-medium text-foreground">
+                      {benefit.title}
+                    </h3>
+                  </div>
+                  <p className="text-sm text-muted-foreground">
+                    {benefit.description}
+                  </p>
+                </div>
+              </MagicCard>
+            </AnimationContainer>
+          ))}
+        </div>
       </MaxWidthWrapper>
 
-      {/* Reviews Section */}
+      {/* Flagship Products */}
       <MaxWidthWrapper className="py-10">
         <AnimationContainer delay={0.1}>
           <div className="flex flex-col items-center lg:items-center justify-center w-full py-8 max-w-xl mx-auto">
-            <MagicBadge title="Our Customers" />
+            <MagicBadge title="Our Products" />
             <h2 className="text-center lg:text-center text-3xl md:text-5xl !leading-[1.1] font-medium font-heading text-foreground mt-6">
-              What our users are saying
+              Flagship Products
             </h2>
             <p className="mt-4 text-center lg:text-center text-lg text-muted-foreground max-w-lg">
-              Here&apos;s what some of our users have to say about Mikrosell &
-              its Products.
+              Proven solutions built for real business needs.
             </p>
           </div>
         </AnimationContainer>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 place-items-start gap-4 md:gap-8 py-10">
-          <div className="flex flex-col items-start h-min gap-6">
-            {REVIEWS.slice(0, 3).map((review, index) => (
-              <AnimationContainer delay={0.2 * index} key={index}>
-                <MagicCard key={index} className="md:p-0">
-                  <Card className="flex flex-col w-full border-none h-min">
-                    <CardHeader className="space-y-0">
-                      <CardTitle className="text-lg font-medium text-muted-foreground">
-                        {review.name}
-                      </CardTitle>
-                      <CardDescription>{review.username}</CardDescription>
-                    </CardHeader>
-                    <CardContent className="space-y-4 pb-4">
-                      <p className="text-muted-foreground">{review.review}</p>
-                    </CardContent>
-                    <CardFooter className="w-full space-x-1 mt-auto">
-                      {Array.from({ length: review.rating }, (_, i) => (
-                        <StarIcon
-                          key={i}
-                          className="w-4 h-4 fill-yellow-500 text-yellow-500"
-                        />
-                      ))}
-                    </CardFooter>
-                  </Card>
-                </MagicCard>
-              </AnimationContainer>
-            ))}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6 py-8">
+          {products.map((product, id) => (
+            <AnimationContainer delay={0.2 * id} key={id}>
+              <MagicCard className="group md:py-6">
+                <div className="flex flex-col items-start justify-center w-full">
+                  <product.icon
+                    strokeWidth={1.5}
+                    className="w-10 h-10 text-foreground mb-4"
+                  />
+                  <h3 className="text-lg font-medium text-foreground mb-2">
+                    {product.title}
+                  </h3>
+                  <p className="text-sm text-muted-foreground">
+                    {product.description}
+                  </p>
+                </div>
+              </MagicCard>
+            </AnimationContainer>
+          ))}
+        </div>
+      </MaxWidthWrapper>
+
+      {/* Social Proof */}
+      <MaxWidthWrapper className="py-10">
+        <AnimationContainer delay={0.1}>
+          <div className="flex flex-col items-center lg:items-center justify-center w-full py-8 max-w-xl mx-auto">
+            <MagicBadge title="Our Impact" />
+            <h2 className="text-center lg:text-center text-3xl md:text-5xl !leading-[1.1] font-medium font-heading text-foreground mt-6">
+              Proven Results
+            </h2>
+            <p className="mt-4 text-center lg:text-center text-lg text-muted-foreground max-w-lg">
+              Real numbers from real businesses we&apos;ve transformed.
+            </p>
           </div>
-          <div className="flex flex-col items-start h-min gap-6">
-            {REVIEWS.slice(3, 6).map((review, index) => (
-              <AnimationContainer delay={0.2 * index} key={index}>
-                <MagicCard key={index} className="md:p-0">
-                  <Card className="flex flex-col w-full border-none h-min">
-                    <CardHeader className="space-y-0">
-                      <CardTitle className="text-lg font-medium text-muted-foreground">
-                        {review.name}
-                      </CardTitle>
-                      <CardDescription>{review.username}</CardDescription>
-                    </CardHeader>
-                    <CardContent className="space-y-4 pb-4">
-                      <p className="text-muted-foreground">{review.review}</p>
-                    </CardContent>
-                    <CardFooter className="w-full space-x-1 mt-auto">
-                      {Array.from({ length: review.rating }, (_, i) => (
-                        <StarIcon
-                          key={i}
-                          className="w-4 h-4 fill-yellow-500 text-yellow-500"
-                        />
-                      ))}
-                    </CardFooter>
-                  </Card>
-                </MagicCard>
-              </AnimationContainer>
-            ))}
-          </div>
-          <div className="flex flex-col items-start h-min gap-6">
-            {REVIEWS.slice(6, 9).map((review, index) => (
-              <AnimationContainer delay={0.2 * index} key={index}>
-                <MagicCard key={index} className="md:p-0">
-                  <Card className="flex flex-col w-full border-none h-min">
-                    <CardHeader className="space-y-0">
-                      <CardTitle className="text-lg font-medium text-muted-foreground">
-                        {review.name}
-                      </CardTitle>
-                      <CardDescription>{review.username}</CardDescription>
-                    </CardHeader>
-                    <CardContent className="space-y-4 pb-4">
-                      <p className="text-muted-foreground">{review.review}</p>
-                    </CardContent>
-                    <CardFooter className="w-full space-x-1 mt-auto">
-                      {Array.from({ length: review.rating }, (_, i) => (
-                        <StarIcon
-                          key={i}
-                          className="w-4 h-4 fill-yellow-500 text-yellow-500"
-                        />
-                      ))}
-                    </CardFooter>
-                  </Card>
-                </MagicCard>
-              </AnimationContainer>
-            ))}
-          </div>
+        </AnimationContainer>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6 py-8">
+          {socialProof.map((proof, id) => (
+            <AnimationContainer delay={0.2 * id} key={id}>
+              <Card className="border-none">
+                <CardHeader className="text-center">
+                  <CardTitle className="text-4xl font-bold text-foreground">
+                    {proof.metric}
+                  </CardTitle>
+                </CardHeader>
+                <CardContent className="text-center">
+                  <CardDescription className="text-base">
+                    {proof.label}
+                  </CardDescription>
+                </CardContent>
+              </Card>
+            </AnimationContainer>
+          ))}
         </div>
       </MaxWidthWrapper>
 
@@ -343,41 +317,31 @@ const HomePage = async () => {
           <LampContainer>
             <div className="flex flex-col items-center justify-center relative w-full text-center">
               <h2 className="bg-gradient-to-b from-neutral-200 to-neutral-400 py-4 bg-clip-text text-center text-4xl md:text-7xl !leading-[1.15] font-medium font-heading tracking-tight text-transparent mt-8">
-                Reach Out to Mikrosell and Bring Your Vision to Life
+                Ready to Transform Your Business?
               </h2>
               <p className="text-muted-foreground mt-6 max-w-md mx-auto">
-                Whether you have a project in mind or just want to explore
-                ideas, we&apos;re here to help make it happen.
+                Let&apos;s discuss how we can help you unlock efficiency, scale faster, and compete globally.
               </p>
-              <div className="mt-6">
-                {/* <Button asChild>
-                                    <Link href="https://mail.google.com/mail/?view=cm&fs=1&to=mikrosell@gmail.com">
-                                        Contact Us!
-                                        <ArrowRightIcon className="w-4 h-4 ml-2" />
-                                    </Link>
-                                </Button> */}
+              <div className="mt-6 flex gap-4 flex-wrap justify-center">
+                <Button asChild size="lg">
+                  <Link href="/contact">
+                    Get a Free Consultation
+                    <ArrowRightIcon className="w-4 h-4 ml-2" />
+                  </Link>
+                </Button>
+                <Button asChild variant="outline" size="lg">
+                  <Link href="/work">
+                    View Our Portfolio
+                    <ArrowRightIcon className="w-4 h-4 ml-2" />
+                  </Link>
+                </Button>
               </div>
             </div>
-            {/* <div className="dark">
-<FloatingDockDemo />
-</div> */}
-            <FloatingDockDemo />
           </LampContainer>
         </AnimationContainer>
       </MaxWidthWrapper>
-      {/* bs attempt on smth cool */}
-
-      {/* <div className="dark">
-<FloatingDockDemo />
-</div> */}
-
-      {/* <FloatingDockDemo /> */}
     </div>
   );
 };
 
 export default HomePage;
-
-//<span className="text-transparent bg-gradient-to-r from-violet-500 to-fuchsia-500 bg-clip-text inline-bloc">
-
-//</spa

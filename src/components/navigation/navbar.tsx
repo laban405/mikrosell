@@ -86,15 +86,14 @@ const Navbar = () => {
                                   className="z-20 relative"
                                 >
                                   <Link
-                                    href="/"
+                                    href="/work"
                                     className="flex h-full w-full select-none flex-col justify-end rounded-lg bg-gradient-to-b from-muted/50 to-muted p-4 no-underline outline-none focus:shadow-md"
                                   >
                                     <h6 className="mb-2 mt-4 text-lg font-medium">
-                                      All Products
+                                      View All Products
                                     </h6>
                                     <p className="text-sm leading-tight text-muted-foreground">
-                                      Products made personaly and for the
-                                      customers.
+                                      See our complete portfolio of solutions and case studies.
                                     </p>
                                   </Link>
                                 </NavigationMenuLink>
@@ -141,13 +140,7 @@ const Navbar = () => {
             ) : (
               <div className="flex items-center gap-x-4">
                 <Link
-                  href="https://mail.google.com/mail/?view=cm&fs=1&to=mikrosell@gmail.com"
-                  className={buttonVariants({ size: "sm", variant: "ghost" })}
-                >
-                  Wishlist
-                </Link>
-                <Link
-                  href="https://mail.google.com/mail/?view=cm&fs=1&to=mikrosell@gmail.com"
+                  href="/contact"
                   className={buttonVariants({ size: "sm" })}
                 >
                   Get in Touch

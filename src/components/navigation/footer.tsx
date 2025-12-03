@@ -18,7 +18,7 @@ const Footer = () => {
               />
             </div>
             <p className="text-muted-foreground mt-4 text-sm text-start">
-              Join us in this wonderful project!
+              Transforming East Africa&apos;s Digital Landscape Through Innovation
             </p>
             <span className="mt-4 text-neutral-200 text-sm flex items-center">
               Made by{" "}
@@ -34,38 +34,38 @@ const Footer = () => {
           <div className="md:grid md:grid-cols-2 md:gap-8">
             <AnimationContainer delay={0.2}>
               <div className="">
-                <h3 className="text-base font-medium text-white">Product</h3>
+                <h3 className="text-base font-medium text-white">Company</h3>
                 <ul className="mt-4 text-sm text-muted-foreground">
                   <li className="mt-2">
                     <Link
-                      href=""
+                      href="/about"
+                      className="hover:text-foreground transition-all duration-300"
+                    >
+                      About Us
+                    </Link>
+                  </li>
+                  <li className="mt-2">
+                    <Link
+                      href="/work"
+                      className="hover:text-foreground transition-all duration-300"
+                    >
+                      Our Work
+                    </Link>
+                  </li>
+                  <li className="mt-2">
+                    <Link
+                      href="/contact"
+                      className="hover:text-foreground transition-all duration-300"
+                    >
+                      Contact
+                    </Link>
+                  </li>
+                  <li className="mt-2">
+                    <Link
+                      href="/products"
                       className="hover:text-foreground transition-all duration-300"
                     >
                       Products
-                    </Link>
-                  </li>
-                  <li className="mt-2">
-                    <Link
-                      href=""
-                      className="hover:text-foreground transition-all duration-300"
-                    >
-                      Pricing
-                    </Link>
-                  </li>
-                  <li className="mt-2">
-                    <Link
-                      href=""
-                      className="hover:text-foreground transition-all duration-300"
-                    >
-                      Testimonials
-                    </Link>
-                  </li>
-                  <li className="mt-2">
-                    <Link
-                      href=""
-                      className="hover:text-foreground transition-all duration-300"
-                    >
-                      Integration
                     </Link>
                   </li>
                 </ul>
@@ -147,17 +147,9 @@ const Footer = () => {
             </AnimationContainer>
             <AnimationContainer delay={0.5}>
               <div className="mt-10 md:mt-0 flex flex-col">
-                <h3 className="text-base font-medium text-white">Company</h3>
+                <h3 className="text-base font-medium text-white">Legal</h3>
                 <ul className="mt-4 text-sm text-muted-foreground">
                   <li className="">
-                    <Link
-                      href=""
-                      className="hover:text-foreground transition-all duration-300"
-                    >
-                      About Us
-                    </Link>
-                  </li>
-                  <li className="mt-2">
                     <Link
                       href="/privacy"
                       className="hover:text-foreground transition-all duration-300"
