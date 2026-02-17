@@ -1,6 +1,5 @@
 import "@/styles/globals.css";
 import { aeonik, cn, generateMetadata, inter } from "@/utils";
-import { ClerkProvider } from "@clerk/nextjs";
 
 export const metadata = generateMetadata();
 
@@ -10,22 +9,20 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <ClerkProvider>
-      <html lang="en" className="scrollbar">
-        <body
-          className={cn(
-            "min-h-screen bg-background text-foreground antialiased !font-default overflow-x-hidden",
-            aeonik.variable,
-            inter.variable,
-          )}
-        >
-          {/* <Providers>
+    <html lang="en" className="scrollbar">
+      <body
+        className={cn(
+          "min-h-screen bg-background text-foreground antialiased !font-default overflow-x-hidden",
+          aeonik.variable,
+          inter.variable,
+        )}
+      >
+        {/* <Providers>
                         <Toaster richColors theme="dark" position="top-right" /> */}
-          {children}
-          {/* </Providers> */}
-        </body>
-      </html>
-    </ClerkProvider>
+        {children}
+        {/* </Providers> */}
+      </body>
+    </html>
   );
 }
 

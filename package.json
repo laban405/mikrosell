@@ -10,7 +10,6 @@
     "postinstall": "prisma generate"
   },
   "dependencies": {
-    "@clerk/nextjs": "^5.1.4",
     "@gsap/react": "^2.1.2",
     "@hookform/resolvers": "^3.10.0",
     "@prisma/client": "^5.15.0",
