@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { Menu, X, Sun, Moon } from 'lucide-react';
-import { useTheme } from '../App';
+
 import { Logo } from './ui/Logo';
+import { useTheme } from './LandingPage';
 
 const Navbar: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
