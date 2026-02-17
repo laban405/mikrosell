@@ -1,27 +1,16 @@
-import React from 'react'
-import { Icons } from "@/components";
-import { cn } from "@/utils";
+import React from 'react';
 
-interface Props {
-    variant?: "icon" | "text" | "full";
-    className?: string;
-}
-
-const Logo = ({ variant = "icon", className }: Props) => {
-    return (
-        <>
-            {variant === "icon" ? (
-                <Icons.logo className={cn("w-8 h-8 transition-all", className)} />
-            ) : variant === "text" ? (
-                <Icons.wordmark className={cn("w-auto h-5 transition-all", className)} />
-            ) : (
-                <div className={cn("w-auto h-8 flex items-center space-x-2 transition-all", className)}>
-                    <Icons.logo className="w-8 h-8 transition-all" />
-                    <Icons.wordmark className="w-auto h-5 transition-all" />
-                </div>
-            )}
-        </>
-    )
+export const Logo: React.FC<{ className?: string }> = ({ className = "" }) => {
+  return (
+    <div className={`flex items-center gap-2 ${className}`}>
+      {/* CSS-only Logo: Dotted square with solid inner square */}
+      <div className="relative w-8 h-8 flex items-center justify-center">
+        {/* Dotted Border */}
+        <div className="absolute inset-0 border-2 border-dotted border-primary rounded-none opacity-80"></div>
+        {/* Inner Solid Square */}
+        <div className="w-3 h-3 bg-primary rounded-none"></div>
+      </div>
+      <span className="text-lg font-bold tracking-tight uppercase">Mikrosell Systems</span>
+    </div>
+  );
 };
-
-export default Logo
