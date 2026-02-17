@@ -1,8 +1,8 @@
 import React, { useRef } from "react";
 import { ArrowDown } from "lucide-react";
-import { Button } from "./ui/Button";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
+import { Button } from "./ui/Button";
 
 const Hero: React.FC = () => {
   const containerRef = useRef<HTMLDivElement>(null);

@@ -2,10 +2,10 @@ import React, { useState, useRef } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
-import { Button } from "./ui/Button";
 import { Mail, MapPin, CheckCircle2, ChevronDown } from "lucide-react";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
+import { Button } from "./ui/Button";
 
 const countryCodes = [
   { label: "Afghanistan (+93)", value: "+93" },
