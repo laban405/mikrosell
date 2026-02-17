@@ -1,57 +1,58 @@
-"use client"
-import React, { useState, useEffect, createContext, useContext } from 'react';
-import Navbar from './Navbar';
-import Hero from './Hero';
-import Positioning from './Positioning';
-import About from './About';
-import Services from './Services';
-import Features from './Features';
-import WhyUs from './WhyUs';
-import Portfolio from './Portfolio';
-import Stats from './Stats';
-import Contact from './Contact';
-import Footer from './Footer';
-import gsap from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { useGSAP } from '@gsap/react';
+"use client";
+import React, { useState, useEffect, createContext, useContext } from "react";
+import Navbar from "./Navbar";
+import Hero from "./Hero";
+import Positioning from "./Positioning";
+import About from "./About";
+import Services from "./Services";
+import Features from "./Features";
+import WhyUs from "./WhyUs";
+import Portfolio from "./Portfolio";
+import Stats from "./Stats";
+import Contact from "./Contact";
+import Testimonials from "./Testimonials";
+import Footer from "./Footer";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useGSAP } from "@gsap/react";
 
 // Register GSAP Plugins globally
 gsap.registerPlugin(ScrollTrigger, useGSAP);
 
 // --- Theme Context ---
-type Theme = 'dark' | 'light';
+type Theme = "dark" | "light";
 interface ThemeContextType {
   theme: Theme;
   toggleTheme: () => void;
 }
 
 const ThemeContext = createContext<ThemeContextType>({
-  theme: 'dark',
+  theme: "dark",
   toggleTheme: () => {},
 });
 
 export const useTheme = () => useContext(ThemeContext);
 
 const App: React.FC = () => {
-  const [theme, setTheme] = useState<Theme>('dark');
+  const [theme, setTheme] = useState<Theme>("dark");
 
   useEffect(() => {
     // Check local storage or preference
-    const savedTheme = localStorage.getItem('theme') as Theme;
+    const savedTheme = localStorage.getItem("theme") as Theme;
     if (savedTheme) {
       setTheme(savedTheme);
-      document.documentElement.classList.remove('light', 'dark');
+      document.documentElement.classList.remove("light", "dark");
       document.documentElement.classList.add(savedTheme);
     } else {
-      document.documentElement.classList.add('dark');
+      document.documentElement.classList.add("dark");
     }
   }, []);
 
   const toggleTheme = () => {
-    const newTheme = theme === 'dark' ? 'light' : 'dark';
+    const newTheme = theme === "dark" ? "light" : "dark";
     setTheme(newTheme);
-    localStorage.setItem('theme', newTheme);
-    document.documentElement.classList.remove('light', 'dark');
+    localStorage.setItem("theme", newTheme);
+    document.documentElement.classList.remove("light", "dark");
     document.documentElement.classList.add(newTheme);
   };
 
@@ -67,6 +68,7 @@ const App: React.FC = () => {
           <Features />
           <WhyUs />
           <Portfolio />
+          <Testimonials />
           <Stats />
           <Contact />
         </main>

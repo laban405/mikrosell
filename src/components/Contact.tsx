@@ -1,11 +1,11 @@
-import React, { useState, useRef } from 'react';
-import { useForm } from 'react-hook-form';
-import { zodResolver } from '@hookform/resolvers/zod';
-import * as z from 'zod';
-import { Button } from './ui/Button';
-import { Mail, MapPin, CheckCircle2, ChevronDown } from 'lucide-react';
-import gsap from 'gsap';
-import { useGSAP } from '@gsap/react';
+import React, { useState, useRef } from "react";
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import * as z from "zod";
+import { Button } from "./ui/Button";
+import { Mail, MapPin, CheckCircle2, ChevronDown } from "lucide-react";
+import gsap from "gsap";
+import { useGSAP } from "@gsap/react";
 
 const countryCodes = [
   { label: "Afghanistan (+93)", value: "+93" },
@@ -247,7 +247,7 @@ const countryCodes = [
   { label: "Western Sahara (+212)", value: "+212" },
   { label: "Yemen (+967)", value: "+967" },
   { label: "Zambia (+260)", value: "+260" },
-  { label: "Zimbabwe (+263)", value: "+263" }
+  { label: "Zimbabwe (+263)", value: "+263" },
 ];
 
 // --- Zod Schema ---
@@ -257,7 +257,9 @@ const contactSchema = z.object({
   company: z.string().optional(),
   countryCode: z.string().default("+1"),
   phone: z.string().optional(),
-  message: z.string().min(10, { message: "Message is too short (min 10 chars)" }),
+  message: z
+    .string()
+    .min(10, { message: "Message is too short (min 10 chars)" }),
 });
 
 type ContactFormData = z.infer<typeof contactSchema>;
@@ -275,37 +277,39 @@ const Contact: React.FC = () => {
   } = useForm<ContactFormData>({
     resolver: zodResolver(contactSchema),
     defaultValues: {
-      countryCode: "+1"
-    }
+      countryCode: "+1",
+    },
   });
 
-  useGSAP(() => {
-    // Animate Info Column
-    gsap.from(".contact-info", {
+  useGSAP(
+    () => {
+      // Animate Info Column
+      gsap.from(".contact-info", {
         x: -50,
         opacity: 0,
         duration: 1,
         ease: "power3.out",
         scrollTrigger: {
-            trigger: containerRef.current,
-            start: "top 70%",
-        }
-    });
+          trigger: containerRef.current,
+          start: "top 70%",
+        },
+      });
 
-    // Animate Form Column
-    gsap.from(".contact-form", {
+      // Animate Form Column
+      gsap.from(".contact-form", {
         x: 50,
         opacity: 0,
         duration: 1,
         ease: "power3.out",
         delay: 0.2,
         scrollTrigger: {
-            trigger: containerRef.current,
-            start: "top 70%",
-        }
-    });
-
-  }, { scope: containerRef });
+          trigger: containerRef.current,
+          start: "top 70%",
+        },
+      });
+    },
+    { scope: containerRef },
+  );
 
   const onSubmit = async (data: ContactFormData) => {
     setIsSubmitting(true);
@@ -315,153 +319,209 @@ const Contact: React.FC = () => {
     setIsSubmitting(false);
     setIsSuccess(true);
     reset({ countryCode: "+1" });
-    
+
     // Reset success message after 5 seconds
     setTimeout(() => setIsSuccess(false), 5000);
   };
 
   return (
-    <section ref={containerRef} id="contact" className="py-24 bg-background relative border-t border-border transition-colors duration-300 overflow-hidden">
+    <section
+      ref={containerRef}
+      id="contact"
+      className="py-24 bg-background relative border-t border-border transition-colors duration-300 overflow-hidden"
+    >
       <div className="container mx-auto px-6">
-        
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24">
-          
           {/* Left Column: Info */}
           <div className="contact-info">
-             <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-6 leading-none uppercase">
-                Let's Build<br />Something Real
-             </h2>
-             <p className="text-muted-foreground text-lg mb-12 max-w-md">
-                We work with businesses ready to move beyond basic software. Tell us about your infrastructure needs.
-             </p>
+            <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-6 leading-none uppercase">
+              Let&apos;s Build
+              <br />
+              Something Real
+            </h2>
+            <p className="text-muted-foreground text-lg mb-12 max-w-md">
+              We work with businesses ready to move beyond basic software. Tell
+              us about your infrastructure needs.
+            </p>
 
-             <div className="space-y-8">
-                <div className="flex items-start gap-4">
-                   <div className="p-3 bg-primary/10 text-primary">
-                      <Mail className="w-6 h-6" />
-                   </div>
-                   <div>
-                      <h4 className="text-foreground font-bold uppercase tracking-widest text-sm mb-1">Email Us</h4>
-                      <p className="text-muted-foreground">hello@mikrosell.systems</p>
-                      <p className="text-muted-foreground">careers@mikrosell.systems</p>
-                   </div>
+            <div className="space-y-8">
+              <div className="flex items-start gap-4">
+                <div className="p-3 bg-primary/10 text-primary">
+                  <Mail className="w-6 h-6" />
                 </div>
+                <div>
+                  <h4 className="text-foreground font-bold uppercase tracking-widest text-sm mb-1">
+                    Email Us
+                  </h4>
+                  <p className="text-muted-foreground">
+                    hello@mikrosell.systems
+                  </p>
+                  <p className="text-muted-foreground">
+                    careers@mikrosell.systems
+                  </p>
+                </div>
+              </div>
 
-                <div className="flex items-start gap-4">
-                   <div className="p-3 bg-primary/10 text-primary">
-                      <MapPin className="w-6 h-6" />
-                   </div>
-                   <div>
-                      <h4 className="text-foreground font-bold uppercase tracking-widest text-sm mb-1">Headquarters</h4>
-                      <p className="text-muted-foreground">101 California St, Suite 2710</p>
-                      <p className="text-muted-foreground">San Francisco, CA 94111</p>
-                   </div>
+              <div className="flex items-start gap-4">
+                <div className="p-3 bg-primary/10 text-primary">
+                  <MapPin className="w-6 h-6" />
                 </div>
-             </div>
+                <div>
+                  <h4 className="text-foreground font-bold uppercase tracking-widest text-sm mb-1">
+                    Headquarters
+                  </h4>
+                  <p className="text-muted-foreground">
+                    101 California St, Suite 2710
+                  </p>
+                  <p className="text-muted-foreground">
+                    San Francisco, CA 94111
+                  </p>
+                </div>
+              </div>
+            </div>
           </div>
 
           {/* Right Column: Form */}
           <div className="contact-form bg-foreground/5 border border-border p-8 md:p-10 relative">
-             {/* Decorative Corner */}
-             <div className="absolute top-0 right-0 w-16 h-16 border-t-2 border-r-2 border-primary/30"></div>
-             <div className="absolute bottom-0 left-0 w-16 h-16 border-b-2 border-l-2 border-primary/30"></div>
+            {/* Decorative Corner */}
+            <div className="absolute top-0 right-0 w-16 h-16 border-t-2 border-r-2 border-primary/30"></div>
+            <div className="absolute bottom-0 left-0 w-16 h-16 border-b-2 border-l-2 border-primary/30"></div>
 
-             {isSuccess ? (
-               <div className="h-full min-h-[400px] flex flex-col items-center justify-center text-center animate-in fade-in zoom-in duration-500">
-                 <div className="w-16 h-16 bg-primary/20 rounded-full flex items-center justify-center mb-6">
-                    <CheckCircle2 className="w-8 h-8 text-primary" />
-                 </div>
-                 <h3 className="text-2xl font-bold text-foreground mb-2">Message Received</h3>
-                 <p className="text-muted-foreground">We'll analyze your request and get back to you within 24 hours.</p>
-                 <Button onClick={() => setIsSuccess(false)} variant="outline" className="mt-8">
-                    Send Another
-                 </Button>
-               </div>
-             ) : (
-               <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
-                  {/* Row 1: Name & Company */}
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                     <div className="space-y-2">
-                        <label className="text-xs font-bold uppercase tracking-widest text-muted-foreground">Full Name</label>
-                        <input 
-                          {...register("name")}
-                          className={`flex h-12 w-full border-b bg-transparent px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:border-primary disabled:cursor-not-allowed disabled:opacity-50 transition-colors ${errors.name ? 'border-destructive' : 'border-input'}`}
-                          placeholder="John Doe"
-                        />
-                        {errors.name && <p className="text-[10px] text-destructive font-medium uppercase tracking-wider">{errors.name.message}</p>}
-                     </div>
-                     <div className="space-y-2">
-                        <label className="text-xs font-bold uppercase tracking-widest text-muted-foreground">Company</label>
-                        <input 
-                          {...register("company")}
-                          className="flex h-12 w-full border-b border-input bg-transparent px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none focus-visible:border-primary disabled:cursor-not-allowed disabled:opacity-50 transition-colors"
-                          placeholder="Acme Inc."
-                        />
-                     </div>
-                  </div>
-
-                  {/* Row 2: Email & Phone */}
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                     <div className="space-y-2">
-                        <label className="text-xs font-bold uppercase tracking-widest text-muted-foreground">Email Address</label>
-                        <input 
-                           {...register("email")}
-                           className={`flex h-12 w-full border-b bg-transparent px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none focus-visible:border-primary disabled:cursor-not-allowed disabled:opacity-50 transition-colors ${errors.email ? 'border-destructive' : 'border-input'}`}
-                           placeholder="john@example.com"
-                        />
-                        {errors.email && <p className="text-[10px] text-destructive font-medium uppercase tracking-wider">{errors.email.message}</p>}
-                     </div>
-                     
-                     <div className="space-y-2">
-                        <label className="text-xs font-bold uppercase tracking-widest text-muted-foreground">Phone Number <span className="text-[10px] font-normal normal-case opacity-50">(Optional)</span></label>
-                        <div className="flex gap-2">
-                           {/* Country Selector */}
-                           <div className="relative w-[120px]">
-                              <select 
-                                {...register("countryCode")}
-                                className="flex h-12 w-full appearance-none border-b border-input bg-transparent px-3 py-2 text-sm ring-offset-background focus-visible:outline-none focus-visible:border-primary disabled:cursor-not-allowed disabled:opacity-50 transition-colors"
-                              >
-                                 {countryCodes.map((c, i) => (
-                                    <option key={i} value={c.value} className="bg-background text-foreground">{c.label}</option>
-                                 ))}
-                              </select>
-                              <ChevronDown className="absolute right-2 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground pointer-events-none" />
-                           </div>
-                           
-                           {/* Phone Input */}
-                           <input 
-                              {...register("phone")}
-                              type="tel"
-                              className="flex-1 flex h-12 w-full border-b border-input bg-transparent px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none focus-visible:border-primary disabled:cursor-not-allowed disabled:opacity-50 transition-colors"
-                              placeholder="555-0123"
-                           />
-                        </div>
-                     </div>
-                  </div>
-
-                  {/* Row 3: Message */}
+            {isSuccess ? (
+              <div className="h-full min-h-[400px] flex flex-col items-center justify-center text-center animate-in fade-in zoom-in duration-500">
+                <div className="w-16 h-16 bg-primary/20 rounded-full flex items-center justify-center mb-6">
+                  <CheckCircle2 className="w-8 h-8 text-primary" />
+                </div>
+                <h3 className="text-2xl font-bold text-foreground mb-2">
+                  Message Received
+                </h3>
+                <p className="text-muted-foreground">
+                  We&apos;ll analyze your request and get back to you within 24
+                  hours.
+                </p>
+                <Button
+                  onClick={() => setIsSuccess(false)}
+                  variant="outline"
+                  className="mt-8"
+                >
+                  Send Another
+                </Button>
+              </div>
+            ) : (
+              <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
+                {/* Row 1: Name & Company */}
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div className="space-y-2">
-                     <label className="text-xs font-bold uppercase tracking-widest text-muted-foreground">Project Details</label>
-                     <textarea 
-                        {...register("message")}
-                        className={`flex min-h-[120px] w-full border bg-background/50 px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none focus-visible:border-primary disabled:cursor-not-allowed disabled:opacity-50 transition-colors resize-none ${errors.message ? 'border-destructive' : 'border-input'}`}
-                        placeholder="Tell us about the infrastructure or automation you need..."
-                     />
-                     {errors.message && <p className="text-[10px] text-destructive font-medium uppercase tracking-wider">{errors.message.message}</p>}
+                    <label className="text-xs font-bold uppercase tracking-widest text-muted-foreground">
+                      Full Name
+                    </label>
+                    <input
+                      {...register("name")}
+                      className={`flex h-12 w-full border-b bg-transparent px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:border-primary disabled:cursor-not-allowed disabled:opacity-50 transition-colors ${errors.name ? "border-destructive" : "border-input"}`}
+                      placeholder="John Doe"
+                    />
+                    {errors.name && (
+                      <p className="text-[10px] text-destructive font-medium uppercase tracking-wider">
+                        {errors.name.message}
+                      </p>
+                    )}
+                  </div>
+                  <div className="space-y-2">
+                    <label className="text-xs font-bold uppercase tracking-widest text-muted-foreground">
+                      Company
+                    </label>
+                    <input
+                      {...register("company")}
+                      className="flex h-12 w-full border-b border-input bg-transparent px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none focus-visible:border-primary disabled:cursor-not-allowed disabled:opacity-50 transition-colors"
+                      placeholder="Acme Inc."
+                    />
+                  </div>
+                </div>
+
+                {/* Row 2: Email & Phone */}
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  <div className="space-y-2">
+                    <label className="text-xs font-bold uppercase tracking-widest text-muted-foreground">
+                      Email Address
+                    </label>
+                    <input
+                      {...register("email")}
+                      className={`flex h-12 w-full border-b bg-transparent px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none focus-visible:border-primary disabled:cursor-not-allowed disabled:opacity-50 transition-colors ${errors.email ? "border-destructive" : "border-input"}`}
+                      placeholder="john@example.com"
+                    />
+                    {errors.email && (
+                      <p className="text-[10px] text-destructive font-medium uppercase tracking-wider">
+                        {errors.email.message}
+                      </p>
+                    )}
                   </div>
 
-                  <Button 
-                    type="submit" 
-                    size="lg" 
-                    className="w-full mt-4 uppercase tracking-widest font-bold"
-                    disabled={isSubmitting}
-                  >
-                    {isSubmitting ? "Processing..." : "Submit Request"}
-                  </Button>
-               </form>
-             )}
-          </div>
+                  <div className="space-y-2">
+                    <label className="text-xs font-bold uppercase tracking-widest text-muted-foreground">
+                      Phone Number{" "}
+                      <span className="text-[10px] font-normal normal-case opacity-50">
+                        (Optional)
+                      </span>
+                    </label>
+                    <div className="flex gap-2">
+                      {/* Country Selector */}
+                      <div className="relative w-[120px]">
+                        <select
+                          {...register("countryCode")}
+                          className="flex h-12 w-full appearance-none border-b border-input bg-transparent px-3 py-2 text-sm ring-offset-background focus-visible:outline-none focus-visible:border-primary disabled:cursor-not-allowed disabled:opacity-50 transition-colors"
+                        >
+                          {countryCodes.map((c, i) => (
+                            <option
+                              key={i}
+                              value={c.value}
+                              className="bg-background text-foreground"
+                            >
+                              {c.label}
+                            </option>
+                          ))}
+                        </select>
+                        <ChevronDown className="absolute right-2 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground pointer-events-none" />
+                      </div>
 
+                      {/* Phone Input */}
+                      <input
+                        {...register("phone")}
+                        type="tel"
+                        className="flex-1 flex h-12 w-full border-b border-input bg-transparent px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none focus-visible:border-primary disabled:cursor-not-allowed disabled:opacity-50 transition-colors"
+                        placeholder="555-0123"
+                      />
+                    </div>
+                  </div>
+                </div>
+
+                {/* Row 3: Message */}
+                <div className="space-y-2">
+                  <label className="text-xs font-bold uppercase tracking-widest text-muted-foreground">
+                    Project Details
+                  </label>
+                  <textarea
+                    {...register("message")}
+                    className={`flex min-h-[120px] w-full border bg-background/50 px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none focus-visible:border-primary disabled:cursor-not-allowed disabled:opacity-50 transition-colors resize-none ${errors.message ? "border-destructive" : "border-input"}`}
+                    placeholder="Tell us about the infrastructure or automation you need..."
+                  />
+                  {errors.message && (
+                    <p className="text-[10px] text-destructive font-medium uppercase tracking-wider">
+                      {errors.message.message}
+                    </p>
+                  )}
+                </div>
+
+                <Button
+                  type="submit"
+                  size="lg"
+                  className="w-full mt-4 uppercase tracking-widest font-bold"
+                  disabled={isSubmitting}
+                >
+                  {isSubmitting ? "Processing..." : "Submit Request"}
+                </Button>
+              </form>
+            )}
+          </div>
         </div>
       </div>
     </section>
