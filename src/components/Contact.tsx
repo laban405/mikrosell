@@ -5,7 +5,7 @@ import * as z from "zod";
 import { Mail, MapPin, CheckCircle2, ChevronDown } from "lucide-react";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
-import { Button } from "./ui/Button";
+import { Button } from "@/components/ui/Button";
 
 const countryCodes = [
   { label: "Afghanistan (+93)", value: "+93" },
